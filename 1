@@ -1,0 +1,23 @@
+Part 1:
+
+def count(a)
+  match_arr = []
+  a.each_with_index do |v,i|
+    i == a.length - 1 ? next_i = 0 : next_i = i + 1
+    v == a.at(next_i) ? match_arr << v : next
+  end
+  match_arr.inject :+
+end
+
+
+Part 2:
+
+def count(a)
+  match_arr = []
+  a.each_with_index do |v,i|
+    steps = a.length / 2
+    next_i =  (i + steps) % a.length
+    v == a.at(next_i) ? match_arr << v : next
+  end
+  match_arr.inject :+
+end
