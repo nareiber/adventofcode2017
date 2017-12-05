@@ -1,0 +1,19 @@
+def count(file)
+  sum = 0
+  File.open(file).each do |line|
+    arr = line.split(' ')
+    sum += 1 if arr.length == arr.uniq.length
+  end
+  puts sum
+end
+
+
+def count(file)
+  sum = 0
+  File.open(file).each do |line|
+    arr = line.split(' ')
+    s_arr = arr.map {|x| x.chars.sort.join}
+    sum += 1 if (arr.length == arr.uniq.length) && (s_arr.length == s_arr.uniq.length)
+  end
+  puts sum
+end
