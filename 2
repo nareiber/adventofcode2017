@@ -1,0 +1,26 @@
+def count(file)
+  sum = 0
+  File.open(file).each do |line|
+    b = line.split(' ').map {|z| z = z.to_i}
+    b = b.drop_if {|x| x %2 }
+    sum = sum + (b.max - b.min)
+  end
+  puts sum
+end
+
+
+def count(file)
+  sum = 0
+  File.open(file).each do |line|
+    b = line.split(' ').map {|z| z = z.to_i}
+    for i in (0..b.length-1)
+      for k in (0..b.length-1)
+        next if i == k
+        if b[i] % b[k] == 0
+          sum = sum + (b[i] / b[k])
+        end
+      end
+    end
+  end
+  puts sum
+end
