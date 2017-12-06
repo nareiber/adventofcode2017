@@ -1,0 +1,30 @@
+ostart = File.open('./a').read.split(' ').map {|x| x.to_i}
+mstart = {}
+ostart.each_with_index {|v, i| mstart[i] = v}
+puts start.join(' ')
+found = []
+found << ostart
+counter = 0
+match = false
+
+
+while match != true
+  counter += 1
+  max = mstart.values.max
+  index_pos = mstart.key(max)
+  len = mstart.values.length
+  mstart[index_pos] = 0
+  while max > 0
+    index_pos += 1
+    mstart[index_pos % len] += 1
+    max = max - 1    
+  end
+  if found.include?(mstart.values) == true
+    match = true
+    # part two
+    steps = counter - found.find_index(mstart.values)
+    puts steps
+  end
+  found << mstart.values
+end
+puts counter
